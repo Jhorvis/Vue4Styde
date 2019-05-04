@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Curso VueJs / V-For</title>
+</head>
+<body>
+<header class="header">
+	<div class="container logo-nav-container">
+		<img src="logo.png" alt="" class="logo">
+	<nav class="navigation">
+	
+	</nav>
+	</div>
+</header>
+
+	<main class="main">
+		<div  class="container">
+
+		<div class="divleft col-md-12 col-md-offset-5">
+			<div id="app">
+		<h3 for='forul'>Curso de VueJs por Styde | v-for</h3>
+		<hr>
+
+		<h4>Directiva v-for utilizando listas desordenadas "UL" </h4>
+		<ul>
+			<li v-for="task in tasks">{{ task }}</li>
+		</ul>
+
+		<h4>Directiva v-for utilizando listas ordenadas "OL" </h4>
+
+		<ol>
+			<li v-for="task in tasks">{{ task }}</li>
+		</ol>
+
+		<h4 for="template">Utilizando etiqueta Template</h4>
+
+		<template v-for="(tarea, indice) in tasks">
+			<p>{{ indice + 1 }}: {{ tarea }}</p>
+			<hr style="width: 100% !important">
+
+		</template>
+
+		<h4 for="template">Iterar sobre un array de objetos</h4>
+
+		<li v-for="(task, indice) of tareas">
+    		<del v-if="!task.pending">{{ task.title }}</del>
+    		<template v-else>{{ task.title }}</template>
+		</li>
+
+		<h4 for="template">Mostrando Propiedades de un objeto</h4>
+		<li v-for="value in user">{{ value }}</li>
+
+		<h4 for="template">imprimir el nombre de las propiedades de nuestro objeto, de forma similiar a como imprimimos los indices</h4>
+		<li v-for="(value, key) in user">{{ key }}: {{ value }}</li>
+
+		<h4 for="template"> pasando un tercer argumento (index) a v-for.</h4>
+		<li v-for="(value, key, index) in user">{{ index }}: {{ key }}: {{ value }}</li>
+
+	
+		</div>
+		<hr>
+		<h2><center>Codigo Relacionado</center></h2>
+
+		<div class="box">
+			<h5><li id='forul'>listas desordenadas "UL"</li></h5>
+		<textarea readonly="yes" class="form-control caja" rows="3">
+		<ul>
+			<li v-for="task in tasks">{{ task }}</li>
+		</ul>
+		</textarea>
+
+		<br>
+		<p>Donde <b>'task'</b> es la variable definida para llamar desde el arreglo y <b>'tasks'</b> es el arreglo que se trae desde el data del Vue. Enre llaves <b>{{la variable a mostrar}}</b> </p>
+
+		</div>
+
+		<div class="box">
+			<h5><li id='forol'>listas Ordenadas "OL"</li></h5>
+		<textarea readonly="yes" class="form-control caja" rows="3">
+		<ol>
+			<li v-for="task in tasks">{{ task }}</li>
+		</ol>
+		</textarea>
+
+		<br>
+		<p>Donde <b>'task'</b> es la variable definida para llamar desde el arreglo y <b>'tasks'</b> es el arreglo que se trae desde el data del Vue. Enre llaves <b>{{la variable a mostrar}}</b> </p>
+
+		</div>
+
+		<div class="box" id='template'>
+		<h5><li>Utilizando Eriqueta "Template"</li></h5>
+		<textarea readonly="yes" class="form-control caja" rows="3">
+		<template v-for="(tarea, indice) in task">
+			<p>{{ indice + 1 }}: {{ tarea }}</p>
+			<hr>
+		</template>
+		</textarea>
+
+		<br>
+		<p>Donde <b>'tarea'</b> es la variable definida para llamar desde el arreglo, <b>'task'</b> es el arreglo que se trae desde el data del Vue y <b>indice</b> es un contador definido para el arreglo. Enre llaves <b>{{la variable a mostrar y el contador}}</b> </p>
+
+		</div>
+
+		<div class="box" id='iteracion'>
+		<h5><li>Iterando con array de objetos"</li></h5>
+		<textarea readonly="yes" class="form-control cajados">
+		
+		<li v-for="(task, indice) of tareas">
+    	<del v-if="!task.pending">{{ task.title }}</del>
+    	<template v-else>{{ task.title }}</template>
+		</li>
+		
+		</textarea>
+		
+		<br>
+		<p>Donde <b>'task'</b> es la variable definida para llamar desde el arreglo, <b>'tareas'</b> es el arreglo que se trae desde el data del Vue y <b>tittle</b> es un objeto perteneciente al arreglo. Enre llaves <b>{{la variable  task.title}}</b> la cual trae el titulo de las tareas y un condidicional <b>v-if="!task.pending"</b> para tachar o no la tarea dependiendo de su estado (true o false)</p>
+
+		<textarea readonly="yes" class="form-control caja">
+		<li v-for="(task, indice) of tasks" v-if="task.pending">
+    		{{ task.title }}
+		</li>
+		</textarea>
+
+
+		<p>Uso de las directivas <b>v-for</b> y <b>v-if</b> en conjunto.</p>
+		</div>
+
+		<div class="box" id='template'>
+		<h5><li>Mostrando Propiedades de un objeto</li></h5>
+		<textarea readonly="yes" class="form-control caja" rows="3">
+		
+		<li v-for="value in user">{{ value }}</li>
+
+		</textarea>
+		<textarea readonly="yes" class="form-control caja" rows="3">
+		
+		<li v-for="(value, key) in user">{{ key }}: {{ value }}</li>
+		
+		</textarea>
+		<textarea readonly="yes" class="form-control caja" rows="3">
+		
+		<li v-for="(value, key, index) in user">{{ index }}: {{ key }}: {{ value }}</li>
+		
+		</textarea>
+
+		<br>
+		<p>Mostrando las tres formas de interactuar con las propiedades de un objeto, primera forma sencilla mostrando los valores del array <b>{{ value }}</b>. Segunda forma mostrando el nombre de las propiedades <b>{{ key }}</b> y la tercera formateando la lista colocando un indice <b>{{ index }}</b></p>
+
+		</div>
+
+<div class="box" id='iteracion'>
+	<h5><li>Codigo del script del VueJs</li></h5>
+	<textarea readonly="yes" class="form-control cajatres">
+		new Vue({
+		el: "#app",
+		data: {
+
+				tasks: [
+
+						'Ver Videos de VueJs',
+						'Practicar VueJs',
+						'Crear Wiki con lo aprendido'
+					],
+
+				tareas: [
+        				{ title: 'Ver Videos de VueJs',
+            			pending: false  },
+       
+        				{ title: 'Practicar VueJs',
+           				 pending: false },
+
+        				{ title: 'Crear Wiki con lo aprendido'
+            			pending: true },
+        
+    					]
+				},
+
+				  user: 
+				  		{
+        				  firstName: 'Jhorvis',
+        				  lastName: 'Sanchez',
+        				  username: 'jsanchezo',
+        				  website: 'https://github.com/Jhorvis',
+        				  description: 'vue.js studend'
+    					 }
+		computed: {
+		
+		}
+	});
+	</textarea>
+
+	<p>Donde <b>task</b> es un arreglo simple, <b>tareas</b> es un arreglo con objetos y <b>user</b> es un arreglo con propiedades </p>
+</div>
+
+
+		</div>
+		</div>
+	</main>
+
+
+
+	<script>
+		new Vue({
+		el: "#app",
+		data: {
+
+				tasks: [
+
+							'Ver Videos de VueJs',
+							'Practicar VueJs',
+							'Crear Wiki con lo aprendido'
+					],
+
+			    tareas: [{
+            				title: 'Ver Videos de VueJs',
+            				pending: false
+        				},
+        				{ 
+            				title: 'Practicar VueJs',
+            				pending: false
+        				},
+        				{ 
+            				title: 'Crear Wiki con lo aprendido',
+            				pending: true
+        				}],
+
+	  			user: {
+       					  firstName: 'Jhorvis',
+        				  lastName: 'Sanchez',
+        				  username: 'jsanchezo',
+        				  website: 'https://github.com/Jhorvis',
+        				  description: 'vue.js studend'
+   						 }
+    
+    
+			
+
+		},
+		computed: {
+		
+		}
+	});
+	</script>
+
+	<footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</footer>
+
+</body>
+</html>

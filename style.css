@@ -10,7 +10,6 @@ body {
 
 	padding: 50px;
 	position: relative;
-	float: center;
     top: 80px;
 	background-color: #FFFFFF;
 	width: 80%;
@@ -31,14 +30,6 @@ hr {
 	solid #999; 
 	height:0;
 	background-color: red;
-}
-
-ul {
-	margin-left: 10%;
-	color: #2b462c;
-}
-ul li {
-   list-style-type: circle;
 }
 
 .header {
@@ -111,4 +102,57 @@ ul li {
 
 		border-color: red;
 		box-shadow: 0 0 0.3em #d81818;
+}
+
+/*----------- CAJA ----------- */
+.caja {
+	 max-height: 80px;
+	 min-height: 80px;
+	 overflow: hidden;
+	 background-color: #333 !important;
+	 color: #47b113;
+}
+
+.cajados {
+	 max-height: 130px;
+	 min-height: 130px;
+	 overflow: hidden;
+	 background-color: #333 !important;
+	 color: #47b113;
+}
+
+.cajatres {
+	 max-height: 1000px;
+	 min-height: 1000px;
+	 overflow: hidden;
+	 background-color: #333 !important;
+	 color: #47b113;
+}
+
+.caja:hover{
+	 color: #54ff00!important;
+	 
+}
+.cajados:hover{
+	 color: #54ff00!important;
+	 
+}
+
+.cajatres:hover{
+	 color: #54ff00!important;
+	 
+}
+
+.box {
+
+
+background: #EEE; 
+margin: 0 0 25px; 
+overflow: hidden; 
+padding: 10px; 
+border-radius: 15px 0px 15px 0px; 
+-moz-border-radius: 15px 0px 15px 0px; 
+-webkit-border-radius: 15px 0px 15px 0px;  
+box-shadow: 0 0 30px 0 rgb(0,0,0,0.8);
+
 }
