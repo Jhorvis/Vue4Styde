@@ -1,0 +1,114 @@
+body {
+	background-color: #d8d4d4; 
+	margin: 0;
+}
+.container {
+	width: 85%;
+	margin: 0 auto;
+}
+.divleft {
+
+	padding: 50px;
+	position: relative;
+	float: center;
+    top: 80px;
+	background-color: #FFFFFF;
+	width: 80%;
+	box-shadow: 0 0 30px 0 rgb(0,0,0,0.5);
+
+}
+
+h3{
+	text-align: center;
+	color: #999999;
+	font-family: "Arial Black";
+}
+hr {
+	width: 80%;
+	border: 0; 
+	border-top: 1px;
+	border-bottom: 1px 
+	solid #999; 
+	height:0;
+	background-color: red;
+}
+
+ul {
+	margin-left: 10%;
+	color: #2b462c;
+}
+ul li {
+   list-style-type: circle;
+}
+
+.header {
+		background: #333;
+		color: white;
+		height: 80px;
+		width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+		position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+}
+
+.header a {
+		color: #fff;
+		text-decoration: none;
+}
+
+.logo-nav-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+}
+
+.navigation ul {
+
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.navigation ul li {
+	display: inline-block;
+}
+
+.navigation ul li a {
+	display: block;
+	padding: 0.5rem 1rem;
+	transition: all 0.3s linear;
+	border-radius: 3px;
+}
+.navigation ul li a:hover {
+	background-color: #ccc;
+}
+
+.logo {
+
+	width: 15%;
+  	
+}
+
+.footer {
+	background: #f2f2f2;
+	padding: 4rem 0;
+	text-align: center;
+	margin-top: 6rem;
+}
+
+
+.has-error {
+			color: #d82100;
+}
+.has-error textarea {
+
+		border-color: #d81818;
+}
+
+.has-error p {
+			color: #d81818;
+}
+
+.has-error textarea:Focus {
+
+		border-color: red;
+		box-shadow: 0 0 0.3em #d81818;
+}

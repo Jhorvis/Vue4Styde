@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Curso VueJs</title>
+</head>
+<body>
+<header class="header">
+	<div class="container logo-nav-container">
+		<img src="logo.png" alt="" class="logo">
+	<nav class="navigation">
+		<ul>
+			<li><a href="#"> Inicio</a></li>
+			<li><a href="#"> Acerca De</a></li>
+			<li><a href="#"> Servicios</a></li>
+			<li><a href="#"> Clientes</a></li>
+			<li><a href="#"> Contactos</a></li>
+		</ul>
+	</nav>
+	</div>
+</header>
+
+	<main id="app" class="main">
+		<div class="container">
+
+		<div class="divleft">
+		<h3>Curso de VueJs por Styde</h3>
+			<hr>
+
+		<div class="form-group">
+		
+
+		<label class="form-inline">Has trabajado con vuejs?</label>
+		
+		<label class="radio-inline">
+		<input class="form-control" type="radio" :value="true" v-model="vue.exp"> Si
+		</label>
+
+		<label class="radio-inline">
+		<input class="form-control" type="radio" :value="false" v-model="vue.exp">No
+		</label>
+
+
+		</div>
+		<!-- Si la respuesta es si 
+
+
+		forma larga de agregar clases a elemento
+		<div v-if="vue.years < 2" :class="'form-group ' + (descriptionErrors ? 'has-error' : '')">
+		
+		-->
+		<template  v-if="vue.exp">
+		<div >
+
+			<label class="control-label" for="vue_years">Cuantos tiempo de experiencia tienes?</label>
+			<input class="form-control" type="number" name="" v-model="vue.years">
+			
+		</div>
+
+		<div v-if="vue.years < 2" class="form-group" :class="descriptionFieldClass">
+			<!--Tambien se puede usar :style para cambiar estilos de forma dinamica-->
+
+			<label class="control-label">Que te motivo aprender vue?</label>
+
+			<textarea class="form-control" v-model="vue.description"></textarea>
+
+			<p  v-if="descriptionErrors != ''" class="help-block">{{ descriptionErrors }}</p>
+			
+		</div>
+		<div v-else :class="descriptionFieldClass">
+			<label class="control-label">Experiencia</label>
+
+			<textarea class="form-control" v-model="vue.description"></textarea>
+			<p  v-if="descriptionErrors != ''" class="help-block">{{ descriptionErrors }}</p>
+		</div>	
+		</template>
+		</div>
+		</div>
+	</main>
+		
+
+
+	<script>
+		new Vue({
+		el: "#app",
+		data: {
+
+			vue: {
+				exp: null,
+				years: 0,
+				description: ''
+			}
+
+		},
+		computed: {
+					descriptionErrors: function () {
+						var val = this.vue.description.trim();
+
+						if (val == "") {
+							return "Favor escribir una descripcion";
+
+						}
+						else if (val.length < 5) {
+							return "Escribir una descripcion mayor a 5 caracteres";
+
+						}
+
+						else if (val.length > 20) {
+							return "Favor escribir una descripcion mas corta";
+
+						}
+
+					},
+
+					descriptionFieldClass: function() {
+
+						return {'has-error': this.descriptionErrors}
+					}
+		}
+	});
+	</script>
+
+	<footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</footer>
+
+</body>
+</html>

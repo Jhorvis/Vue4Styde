@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<div id="app">
+		<div v-if="!formSubmitted">
+		<form @submit.prevent="submitForm">
+			<input type="text" v-model="firts" id="firts" name="firts">
+			<input type="text" v-model="last" id="last" name="last">
+			<button type="submit" :disabled="!isFormValid()" id="send">Aceptar</button>
+		</form>
+	</div>
+	<div v-else>
+	<div id="welcome">
+		<h4>Bienvenido, {{ reversedname }} - {{ firts }} {{ last }}</h4>		
+	</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script>
+	
+	new Vue({
+		el: "#app",
+		data: {
+			firts: '',
+			last: '',
+			formSubmitted: false
+		},
+		computed:{
+					reversedname: function (){
+						return this.firts.split('').reverse().join('');
+					} //Funcion que retorna el valor del nombre en reverso
+		},
+		methods: {
+					isFormValid: function () {
+						return this.firts != "" && this.last != "";
+			},
+
+				submitForm: function(){
+					if (!this.isFormValid()) return;
+
+					this.formSubmitted = true;
+				}
+		}
+	});
+
+</script>
+	
+</div>
+</div>
+</body>
+</html>
