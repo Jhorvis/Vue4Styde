@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Curso VueJs / Manejo de eventos</title>
+</head>
+<body>
+<header class="header">
+	<div class="container logo-nav-container">
+		<img src="logo.png" alt="" class="logo">
+	<nav class="navigation">
+	
+	</nav>
+	</div>
+</header>
+
+	<main class="main">
+		<div  class="container">
+		<div class="divcontainer">
+			<div id="app">
+			<h3>Manejo de eventos</h4>
+			<hr>
+
+			<div class="left">
+			<form @submit.prevent="createTask">
+			<div class="form-group">
+		
+			<div class="col-md-4">
+			<label>Titulo de tarea:</label>
+			<input type="text"
+			v-model="new_task"
+       		class="form-control">
+			</div>
+			
+			</div>
+			<div class="col-md-2">
+			<button class="btn btn-info">Agregar</button>
+		
+			</div>
+			</form>
+			</div>
+		
+		<div class="right">
+			<li v-for="(task, indice) of tareas">
+    		<del v-if="!task.pending">{{ task.title }}</del>
+    		<template v-else>{{ task.title }}</template>
+		</li>
+		</div>
+
+		</div>
+		</div>
+	</div>
+</main>
+</body>
+
+	<script>
+		var vm = new Vue({
+		el: "#app",
+		data: {
+
+				new_task: '',
+
+			    tareas: [{
+            				title: 'Ver Videos de VueJs',
+            				pending: false
+        				},
+        				{ 
+            				title: 'Practicar VueJs',
+            				pending: false
+        				},
+        				{ 
+            				title: 'Crear Wiki con lo aprendido',
+            				pending: true
+        				}]
+    
+			
+
+		},
+		computed: {
+		
+		},
+		methods: {
+					createTask: function () {
+						
+						if (this.new_task != ''){
+						this.tareas.push ({
+
+							title: this.new_task,
+							pending: true
+
+						});
+
+						this.new_task = '';
+						}
+						else {
+							return alert('Debe escribir algo');
+						}
+					}
+		}
+	});
+	</script>
+</html>
