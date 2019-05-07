@@ -22,7 +22,7 @@
 		<div  class="container">
 		<div class="divcontainer">
 			<div id="app">
-			<h3>Manejo de eventos</h4>
+			<h3>Manejo de eventos</h3>
 			<hr>
 
 			<div class="left">
@@ -30,7 +30,7 @@
 			<div class="form-group">
 		
 			<div class="col-md-4">
-			<label>Titulo de tarea:</label>
+			<label :class="completeFieldClass">Titulo de tarea:</label>
 			<input type="text"
 			v-model="new_task"
        		class="form-control">
@@ -47,7 +47,7 @@
 		<div class="right">
 			<li v-for="(task, indice) of tareas">
     		<del v-if="!task.pending">{{ task.title }}</del>
-    		<template v-else>{{ task.title }}</template>
+    		<label v-else >{{ task.title }}</label>
 		</li>
 		</div>
 
@@ -81,6 +81,12 @@
 
 		},
 		computed: {
+
+
+					completeFieldClass: function() {
+
+						return {'tachado': this.value}
+					}
 		
 		},
 		methods: {

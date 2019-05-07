@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Curso VueJs / Uso de filtros</title>
+</head>
+<body>
+<header class="header">
+	<div class="container logo-nav-container">
+		<img src="logo.png" alt="" class="logo">
+	<nav class="navigation">
+	
+	</nav>
+	</div>
+</header>
+
+	<main class="main">
+		<div  class="container">
+		<div class="divcontainer">
+			<div id="app">
+				<h4>Bienvenido {{ name | upper | title('Mr') }}</h4>
+				<h2>Su Saldo es: {{ 1520132900 | money }}</h2>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script src="js/numeral.min.js"></script>
+<script>
+
+/*Vue.filter('money', function (value) {
+    return numeral(value).format('0,0[.]00 $');
+}); De esta forma se agrega un filtro global*/
+var vm = new Vue({
+	el: "#app",
+	data: {
+			name: "jhorvis"
+	},
+
+    filters: {
+        upper: function (value) {
+            return value.toUpperCase();
+        },
+
+        title: function (value, titulo) {
+        	return titulo +". "+ value;
+        },
+
+        money: function (value){
+        	 return numeral(value).format('0,0[.]00 $');
+        }
+
+    }
+});
+</script>
+</html>
